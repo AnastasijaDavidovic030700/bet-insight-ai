@@ -184,33 +184,31 @@ Each AI insight contains:
 
 \### Dashboard
 
-!\[Dashboard](./docs/screenshots/dashboard.png)
+<img src="./docs/screenshots/dashboard.png" alt="Dashboard" width="900"/>
 
 
 
 \### Branch Management
 
-!\[Branches](./docs/screenshots/branches.png)
+<img src="./docs/screenshots/branches.png" alt="Branch Management" width="900"/>
 
 
 
 \### Daily Reports
 
-!\[Daily Reports](./docs/screenshots/daily-reports.png)
+<img src="./docs/screenshots/daily-reports.png" alt="Daily Reports" width="900"/>
 
 
 
 \### AI Investigation Center
 
-!\[AI Investigation Center](./docs/screenshots/investigation-center.png)
+<img src="./docs/screenshots/investigation-center.png" alt="AI Investigation Center" width="900"/>
 
 
 
 \### AI Insights
 
-!\[AI Insights](./docs/screenshots/ai-insights.png)
-
-
+<img src="./docs/screenshots/ai-insights.png" alt="AI Insights" width="900"/>
 
 \## Tech Stack
 
