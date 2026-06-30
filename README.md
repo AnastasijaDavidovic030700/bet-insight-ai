@@ -178,6 +178,40 @@ Each AI insight contains:
 
 
 
+\## Screenshots
+
+
+
+\### Dashboard
+
+!\[Dashboard](docs/screenshots/dashboard.png)
+
+
+
+\### Branch Management
+
+!\[Branches](docs/screenshots/branches.png)
+
+
+
+\### Daily Reports
+
+!\[Daily Reports](docs/screenshots/daily-reports.png)
+
+
+
+\### AI Investigation Center
+
+!\[AI Investigation Center](docs/screenshots/investigation-center.png)
+
+
+
+\### AI Insights
+
+!\[AI Insights](docs/screenshots/ai-insights.png)
+
+
+
 \## Tech Stack
 
 
