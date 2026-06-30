@@ -12,12 +12,17 @@ import {
   YAxis,
 } from "recharts";
 import "./App.css";
+import BranchesPage from "./pages/BranchesPage.jsx";
+import DailyReportsPage from "./pages/DailyReportsPage.jsx";
+import AnomaliesPage from "./pages/AnomaliesPage.jsx";
+import AiInsightsPage from "./pages/AiInsightsPage.jsx";
 
 function App() {
   const [stats, setStats] = useState(null);
   const [anomalies, setAnomalies] = useState([]);
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activePage, setActivePage] = useState("dashboard");
 
   useEffect(() => {
     loadDashboardData();
@@ -104,15 +109,52 @@ function App() {
           <h2>BetInsight AI</h2>
 
           <nav>
-            <a className="active">Dashboard</a>
-            <a>Branches</a>
-            <a>Daily Reports</a>
-            <a>Anomalies</a>
-            <a>AI Insights</a>
+            <a
+                className={activePage === "dashboard" ? "active" : ""}
+                onClick={() => setActivePage("dashboard")}
+            >
+              Dashboard
+            </a>
+
+            <a
+                className={activePage === "branches" ? "active" : ""}
+                onClick={() => setActivePage("branches")}
+            >
+              Branches
+            </a>
+
+            <a
+                className={activePage === "reports" ? "active" : ""}
+                onClick={() => setActivePage("reports")}
+            >
+              Daily Reports
+            </a>
+            <a
+                className={activePage === "anomalies" ? "active" : ""}
+                onClick={() => setActivePage("anomalies")}
+            >
+              Anomalies
+            </a>
+            <a
+                className={activePage === "ai-insights" ? "active" : ""}
+                onClick={() => setActivePage("ai-insights")}
+            >
+              AI Insights
+            </a>
           </nav>
         </aside>
 
         <main className="main-content">
+          {activePage === "branches" ? (
+              <BranchesPage />
+          ) : activePage === "reports" ? (
+              <DailyReportsPage />
+          ) : activePage === "anomalies" ? (
+              <AnomaliesPage />
+          ) : activePage === "ai-insights" ? (
+              <AiInsightsPage />
+          ) : (
+              <>
           <header className="page-header">
             <div>
               <h1>Business Dashboard</h1>
@@ -247,6 +289,8 @@ function App() {
               </tbody>
             </table>
           </section>
+              </>
+          )}
         </main>
       </div>
   );

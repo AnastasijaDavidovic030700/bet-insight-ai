@@ -1,5 +1,6 @@
 package com.betinsight.controller;
 
+import com.betinsight.dto.AnomalyReviewRequest;
 import com.betinsight.entity.Anomaly;
 import com.betinsight.service.AnomalyService;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +31,10 @@ public class AnomalyController {
     @PostMapping("/generate")
     public List<Anomaly> generateAnomalies() {
         return anomalyService.generateAnomalies();
+    }
+
+    @PutMapping("/{id}/review")
+    public Anomaly updateReview(@PathVariable Long id, @RequestBody AnomalyReviewRequest request) {
+        return anomalyService.updateReview(id, request);
     }
 }

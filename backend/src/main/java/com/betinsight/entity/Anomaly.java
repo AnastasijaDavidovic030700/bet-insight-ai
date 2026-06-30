@@ -18,7 +18,25 @@ public class Anomaly {
 
     private String severity;
 
+    private Integer riskScore;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String explanation;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String recommendedActions;
+
+    private String status = "NEW";
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String managerNote;
+
     private LocalDateTime createdAt;
+
+    private LocalDateTime reviewedAt;
 
     @ManyToOne
     @JoinColumn(name = "branch_id", nullable = false)
@@ -31,21 +49,14 @@ public class Anomaly {
     public Anomaly() {
     }
 
-    public Anomaly(Long id, String type, String description, String severity,
-                   LocalDateTime createdAt, Branch branch, DailyReport dailyReport) {
-        this.id = id;
-        this.type = type;
-        this.description = description;
-        this.severity = severity;
-        this.createdAt = createdAt;
-        this.branch = branch;
-        this.dailyReport = dailyReport;
-    }
-
     @PrePersist
     public void prePersist() {
         if (createdAt == null) {
             createdAt = LocalDateTime.now();
+        }
+
+        if (status == null) {
+            status = "NEW";
         }
     }
 
@@ -65,8 +76,32 @@ public class Anomaly {
         return severity;
     }
 
+    public Integer getRiskScore() {
+        return riskScore;
+    }
+
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public String getRecommendedActions() {
+        return recommendedActions;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getManagerNote() {
+        return managerNote;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public LocalDateTime getReviewedAt() {
+        return reviewedAt;
     }
 
     public Branch getBranch() {
@@ -93,8 +128,32 @@ public class Anomaly {
         this.severity = severity;
     }
 
+    public void setRiskScore(Integer riskScore) {
+        this.riskScore = riskScore;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public void setRecommendedActions(String recommendedActions) {
+        this.recommendedActions = recommendedActions;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setManagerNote(String managerNote) {
+        this.managerNote = managerNote;
+    }
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public void setReviewedAt(LocalDateTime reviewedAt) {
+        this.reviewedAt = reviewedAt;
     }
 
     public void setBranch(Branch branch) {

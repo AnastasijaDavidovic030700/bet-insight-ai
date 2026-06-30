@@ -12,4 +12,6 @@ public interface AnomalyRepository extends JpaRepository<Anomaly, Long> {
     List<Anomaly> findByBranchIdOrderByCreatedAtDesc(Long branchId);
 
     boolean existsByDailyReportIdAndType(Long dailyReportId, String type);
+
+    void deleteByDailyReportId(Long dailyReportId);
 }

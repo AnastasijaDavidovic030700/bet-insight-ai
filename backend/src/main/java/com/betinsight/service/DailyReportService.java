@@ -15,10 +15,14 @@ public class DailyReportService {
 
     private final DailyReportRepository dailyReportRepository;
     private final BranchService branchService;
+    private final AnomalyService anomalyService;
 
-    public DailyReportService(DailyReportRepository dailyReportRepository, BranchService branchService) {
+    public DailyReportService(DailyReportRepository dailyReportRepository,
+                              BranchService branchService,
+                              AnomalyService anomalyService) {
         this.dailyReportRepository = dailyReportRepository;
         this.branchService = branchService;
+        this.anomalyService = anomalyService;
     }
 
     public List<DailyReport> getAllReports() {
@@ -48,7 +52,11 @@ public class DailyReportService {
 
         calculateBusinessFields(report);
 
-        return dailyReportRepository.save(report);
+        DailyReport savedReport = dailyReportRepository.save(report);
+
+        anomalyService.regenerateAnomaliesForReport(savedReport);
+
+        return savedReport;
     }
 
     public DailyReport updateReport(Long id, DailyReportRequest request) {
@@ -64,7 +72,11 @@ public class DailyReportService {
 
         calculateBusinessFields(existingReport);
 
-        return dailyReportRepository.save(existingReport);
+        DailyReport savedReport = dailyReportRepository.save(existingReport);
+
+        anomalyService.regenerateAnomaliesForReport(savedReport);
+
+        return savedReport;
     }
 
     public void deleteReport(Long id) {
